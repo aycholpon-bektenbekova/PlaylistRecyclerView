@@ -42,7 +42,10 @@ class FirstFragment : Fragment() {
     }
 
     fun onClick(position: Int){
-     requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, SecondFragment()).commit()
-      
+        val bundle = Bundle()
+        bundle.putSerializable("key", position)
+        val fragment = SecondFragment()
+        fragment.arguments = bundle
+     requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
     }
 }
